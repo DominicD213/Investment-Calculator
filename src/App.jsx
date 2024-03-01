@@ -1,6 +1,14 @@
+import Header from "./components/Header"
+import UserInputs from "./components/UserInputs"
+import { useState } from "react";
+
+
 function App() {
   return (
-    <h1>React Investment Calculator</h1>
+    <div>
+    <Header/>
+    <UserInputs/>
+    </div>
   )
 }
 
