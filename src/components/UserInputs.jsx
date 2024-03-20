@@ -1,43 +1,41 @@
-import React from 'react'
-import LabelSection from '../microComponents/LabelSection'
-import { useState } from 'react'
+import React from 'react';
+import LabelSection from '../microComponents/LabelSection';
 
-const UserInputs = () => {
-    const [objectStateValue, newObjectStateValue] = useState({
-        initialInvestment: 100,
-        annualInvestment : 20,
-        expectedReturn: 5,
-        duration:4
-    })
-
-    function handleValue(inputIdenifier, newValue){
-        newObjectStateValue(prevUserInput =>{
-           return{
-            ...prevUserInput, [inputIdenifier]:newValue,
-          }
-        });
-   }
+const UserInputs = ({ onchange, objectStateValue }) => {
+    console.log("objectStateValue in UserInputs component:", objectStateValue);
 
   return (
-    <div id ='user-input'>
-            <div className='input-group'>
-                <LabelSection labelTitle = 'Initial Investment' 
-                    stateValue={newObjectStateValue} idenifier={'initialInvestment'} 
-                    valueHandeling={handleValue} valueIdenifier={UserInputs.initialInvestment}/>
-                <LabelSection labelTitle = 'Annual Investment' 
-                    stateValue={newObjectStateValue} idenifier={'annualInvestment'} 
-                    valueHandeling={handleValue} valueIdenifier={UserInputs.annualInvestment}/>
-            </div>
-            <div className='input-group'>
-                <LabelSection labelTitle = 'Expected Return' 
-                    stateValue={newObjectStateValue} idenifier={'expectedReturn'} 
-                    valueHandeling={handleValue} valueIdenifier={UserInputs.expectedReturn}/>
-                <LabelSection labelTitle = 'Duration' 
-                    stateValue={newObjectStateValue} idenifier={'duration'} 
-                    valueHandeling={handleValue} valueIdenifier={UserInputs.duration}/>
-            </div>
+    <div id='user-input'>
+      <div className='input-group'>
+        <LabelSection
+          labelTitle='Initial Investment'
+          identifier='initialInvestment'
+          valueHandling={onchange}
+          valueIdentifier={objectStateValue.initialInvestment}
+        />
+        <LabelSection
+          labelTitle='Annual Investment'
+          identifier='annualInvestment'
+          valueHandling={onchange}
+          valueIdentifier={objectStateValue.annualInvestment}
+        />
+      </div>
+      <div className='input-group'>
+        <LabelSection
+          labelTitle='Expected Return'
+          identifier='expectedReturn'
+          valueHandling={onchange}
+          valueIdentifier={objectStateValue.expectedReturn}
+        />
+        <LabelSection
+          labelTitle='Duration'
+          identifier='duration'
+          valueHandling={onchange}
+          valueIdentifier={objectStateValue.duration}
+        />
+      </div>
     </div>
-  )
+  );
 }
 
-export default UserInputs
+export default UserInputs;

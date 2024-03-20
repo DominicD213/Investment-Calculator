@@ -1,15 +1,23 @@
-import React from 'react'
+import React from 'react';
 
-export const LabelSection = ({labelTitle,idenifier,valueHandeling,valueIdenifier}) => {
+const LabelSection = ({ labelTitle, identifier, valueHandling, valueIdentifier }) => {
+  console.log("valueIdentifier in LabelSection component:", valueIdentifier);
   return (
     <div>
-        <p>
-            <label>{labelTitle}</label>
-            <input type='number' required value={valueIdenifier} onChange={(event) => 
-                valueHandeling(idenifier,event.target.value)}></input>
-        </p>
+      <p>
+        <label>{labelTitle}</label>
+        <input
+          type='number'
+          required
+          value={valueIdentifier}
+          onChange={(event) => {
+            console.log("Input value:", event.target.value);
+            valueHandling(identifier, event.target.value);
+          }}
+        />
+      </p>
     </div>
-  )
+  );
 }
 
-export default LabelSection
+export default LabelSection;
